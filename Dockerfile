@@ -20,13 +20,13 @@ RUN /opt/csgo/steamcmd.sh +login anonymous \
                           +app_update 740 validate \
                           +quit
 
-# Make port available
-EXPOSE 27015
-
 #ADD Default config files
 RUN yum install unzip -y
 ADD server.cfg /opt/csgo/csgoserver/csgo/cfg/
 RUN cd /opt/csgo/csgoserver/csgo/cfg && wget http://gfx.esl.eu/media/counterstrike/csgo/downloads/configs/csgo_esl_serverconfig.zip && unzip csgo_esl_serverconfig.zip
+
+# Make port available
+EXPOSE 27015
 
 # This container will be executable
 WORKDIR /opt/csgo/csgoserver
